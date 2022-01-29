@@ -1,0 +1,114 @@
+.root{
+    -white-colour: white;
+    -wrong-colour: #787c7e;
+    -present-colour: #c9b458;
+    -correct-colour: #6aaa64;
+    -text-fill-colour: black;
+    -empty-border-colour: #d3d6da;
+    -unlocked-border-colour: #787c7e;
+    -background-colour: white;
+    -key-background-colour: #d3d6da;
+    -toast-background-colour: black;
+    -toast-letter-colour: -white-colour;
+}
+
+.main-screen: dark-mode {
+   -background-colour: #121213;
+   -empty-border-colour: #3a3a3c;
+   -unlocked-border-colour: #565758;
+   -key-background-colour: #818384;
+   -text-fill-colour: -white-colour;
+   -wrong-colour: #3a3a3c;
+   -white-colour: #d7dadc;
+   -toast-background-colour: -white-colour;
+   -toast-letter-colour: black;
+}
+
+
+.tile-letter {
+     -fx-text-fill: -text-fill-colour;
+     -fx-font-size: 30px;
+     -fx-font-weight: bold;
+}
+
+.tile-box {
+   -fx-border-width: 2px;
+   -fx-border-color: -empty-border-colour;
+   -fx-background-color: -background-colour;
+   -fx-min-width: 62px;
+   -fx-min-height: 61px;
+}
+
+.key-button:empty,
+.tile-box:empty {
+  -fx-background-color: -background-colour;
+  -fx-border-color: -empty-border-colour;
+}
+
+.key-button:unlocked,
+.tile-box:unlocked {
+  -fx-background-color: -background-colour;
+  -fx-border-color: -wrong-colour;
+}
+
+.key-button:wrong,
+.tile-box:wrong {
+  -fx-background-color: -wrong-colour;
+  -fx-border-color: -wrong-colour;
+  -text-fill-colour: -white-colour;
+}
+
+.key-button:present,
+.tile-box:present {
+  -fx-background-color: -present-colour;
+  -fx-border-color: -present-colour;
+  -text-fill-colour: -white-colour;
+}
+
+.key-button:correct,
+.tile-box:correct {
+  -fx-background-color: -correct-colour;
+  -fx-border-color: -correct-colour;
+  -text-fill-colour: -white-colour;
+}
+
+.key-button {
+  -fx-font-size: 15px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #d7dadc;
+  -fx-background-color: -key-background-colour;
+  -fx-text-fill: -text-fill-colour;
+  -fx-icon-color: green;
+}
+
+.key-button .ikonli-font-icon {
+    -fx-icon-color: -text-fill-colour;
+    -fx-icon-size: 28px;
+}
+
+.main-screen {
+  -fx-background-color: -background-colour;
+  -fx-padding: 10px;
+  -fx-alignment: top-center;
+}
+
+.test-border {
+  -fx-border-width: 2px;
+  -fx-border-color: red;
+}
+
+.bad-word {
+   -fx-background-color: -toast-background-colour;
+   -fx-text-fill: -toast-letter-colour;
+   -fx-font-weight: bold;
+   -fx-alignment: center;
+   -fx-background-radius: 6px;
+   -fx-padding: 15px 20px 15px 20px;
+}
+
+.title {
+   -fx-font-family: "Helvetica";
+   -fx-font-weight: 700;
+   -fx-font-size: 36px;
+   -fx-text-fill: -text-fill-colour;
+}
