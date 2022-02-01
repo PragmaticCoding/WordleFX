@@ -30,16 +30,16 @@ class WordleInteractor(val model: WordleModel) {
    }
 
    private fun performCheck(guess: List<LetterModel>) {
-      val nonCorrectLetters: MutableList<Char> = IntRange(0, 4).filter { guess[it].letter != model.word[it] }.map { model.word[it] } as MutableList<Char>
-      model.wordGuessed = (nonCorrectLetters.size == 0)
+      val presentLetters = model.word.filterIndexed { index, c -> guess[index].letter != c } as MutableList<Char>
+      model.wordGuessed = (presentLetters.size == 0)
       guess.forEachIndexed { column, letterModel ->
          val letter = letterModel.letter
          letterModel.status = LetterStatus.WRONG
          if (model.word[column] == letter) {
             letterModel.status = LetterStatus.CORRECT
-         } else if (nonCorrectLetters.contains(letter)) {
+         } else if (presentLetters.contains(letter)) {
             letterModel.status = LetterStatus.PRESENT
-            nonCorrectLetters.remove(letter)
+            presentLetters.remove(letter)
          }
       }
    }
