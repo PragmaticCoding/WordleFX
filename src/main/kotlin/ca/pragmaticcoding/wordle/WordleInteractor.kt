@@ -16,6 +16,7 @@ class WordleInteractor(val model: WordleModel) {
 
    fun checkWord() {
       if (model.currentColumn > 4) {
+         model.wordValidity[model.currentRow].set(true)
          val guess = model.letters[model.currentRow]
          if (data.isWordValid(guess.map(LetterModel::letter))) {
             performCheck(guess)
@@ -23,8 +24,7 @@ class WordleInteractor(val model: WordleModel) {
             model.currentColumn = 0
             setAlphabet()
          } else {
-            model.invalidRow = 99
-            model.invalidRow = model.currentRow
+            model.wordValidity[model.currentRow].set(false)
          }
       }
    }

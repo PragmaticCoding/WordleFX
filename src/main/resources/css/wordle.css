@@ -1,8 +1,6 @@
 .root{
     -white-colour: white;
     -wrong-colour: #787c7e;
-    -present-colour: #c9b458;
-    -correct-colour: #6aaa64;
     -text-fill-colour: black;
     -empty-border-colour: #d3d6da;
     -unlocked-border-colour: #787c7e;
@@ -10,16 +8,18 @@
     -key-background-colour: #d3d6da;
     -toast-background-colour: black;
     -toast-letter-colour: -white-colour;
+    -present-colour: #c9b458;
+    -correct-colour: #6aaa64;
 }
 
 .main-screen: dark-mode {
-   -background-colour: #121213;
+   -white-colour: #d7dadc;
+   -wrong-colour: #3a3a3c;
+   -text-fill-colour: -white-colour;
    -empty-border-colour: #3a3a3c;
    -unlocked-border-colour: #565758;
+   -background-colour: #121213;
    -key-background-colour: #818384;
-   -text-fill-colour: -white-colour;
-   -wrong-colour: #3a3a3c;
-   -white-colour: #d7dadc;
    -toast-background-colour: -white-colour;
    -toast-letter-colour: black;
 }

@@ -13,7 +13,7 @@ import javafx.scene.paint.Color
 import javafx.util.Builder
 import org.kordamp.ikonli.javafx.FontIcon
 
-class ViewBuilder(private val model: WordleModel, private val keyboard: VirtualKeyboard) : Builder<Region> {
+class ViewBuilder(private val model: WordleModel, private val keyboard: Region) : Builder<Region> {
 
    override fun build(): Region = VBox(40.0, createTitle(), createTilePane(), badWordMessage(), keyboard).apply {
       ViewBuilder::class.java.getResource("/css/wordle.css")?.toString()?.let { stylesheets += it }
@@ -50,8 +50,10 @@ class ViewBuilder(private val model: WordleModel, private val keyboard: VirtualK
    private fun badWordMessage() = Label("Not in word list").apply {
       styleClass += "bad-word"
       opacity = 0.0
-      model.invalidRowProperty().addListener { _ ->
-         if (model.invalidRow < 10) {
+      println("starting ${model.wordsValid.get()}")
+      model.wordsValid.addListener { _ ->
+         println("listener: ${model.wordsValid.get()}")
+         if (!model.wordsValid.get()) {
             showToast(this)
          }
       }
@@ -62,8 +64,8 @@ class ViewBuilder(private val model: WordleModel, private val keyboard: VirtualK
       children += IntRange(0, 4).map {
          letterBox(model.letters[row][it])
       }
-      model.invalidRowProperty().addListener { _ ->
-         if (model.invalidRow == row) {
+      model.wordValidity[row].addListener { _ ->
+         if (!model.wordValidity[row].get()) {
             wiggleRow(this)
          }
       }
