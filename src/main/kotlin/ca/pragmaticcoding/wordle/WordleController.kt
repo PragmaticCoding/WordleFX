@@ -1,6 +1,7 @@
 package ca.pragmaticcoding.wordle
 
 import javafx.event.EventHandler
+import javafx.scene.input.KeyCode
 import javafx.scene.layout.Region
 
 class WordleController {
@@ -11,12 +12,16 @@ class WordleController {
 
    init {
       view.onKeyTyped = EventHandler { event ->
-         when (event.character.first().code) {
-            13 -> interactor.checkWord()
-            8 -> interactor.eraseLetter()
-            else -> {
-               if (event.character.uppercase().first() in 'A'..'Z') {
-                  interactor.handleLetter(event.character.uppercase().first())
+         when (event.code) {
+            KeyCode.ENTER -> interactor.checkWord()
+            KeyCode.BACK_SPACE -> interactor.eraseLetter()
+            else -> when (event.character.first().code) {
+               13 -> interactor.checkWord()
+               8 -> interactor.eraseLetter()
+               else -> event.character.uppercase().first().also {
+                  if (it in 'A'..'Z') {
+                     interactor.handleLetter(it)
+                  }
                }
             }
          }
