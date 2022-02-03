@@ -20,25 +20,25 @@ class ViewBuilder(private val model: WordleModel, private val keyboard: Region) 
       styleClass.add("main-screen")
       alignment = Pos.TOP_CENTER
       val darkModePseudoClass = PseudoClass.getPseudoClass("dark-mode")
-      model.darkModeProperty().addListener { _ ->
-         pseudoClassStateChanged(darkModePseudoClass, model.darkMode)
+      model.darkMode.addListener { _ ->
+         pseudoClassStateChanged(darkModePseudoClass, model.darkMode.value)
       }
    }
 
    private fun letterBox(letterModel: LetterModel) = StackPane().apply {
       children += Label().apply {
-         textProperty().bind(Bindings.createStringBinding({ letterModel.letter.toString() }, letterModel.letterProperty()))
+         textProperty().bind(Bindings.createStringBinding({ letterModel.letter.value.toString() }, letterModel.letter))
          styleClass += "tile-letter"
       }
       styleClass += "tile-box"
-      letterModel.statusProperty().addListener { _ ->
-         if (letterModel.status > LetterStatus.UNLOCKED) {
-            flipTile(this, letterModel.column, letterModel.status)
+      letterModel.status.addListener { _ ->
+         if (letterModel.status.value > LetterStatus.UNLOCKED) {
+            flipTile(this, letterModel.column, letterModel.status.value)
          } else {
-            if (letterModel.status == LetterStatus.UNLOCKED) {
+            if (letterModel.status.value == LetterStatus.UNLOCKED) {
                flashTile(this)
             }
-            LetterStatus.updatePseudoClass(this, letterModel.status)
+            LetterStatus.updatePseudoClass(this, letterModel.status.value)
          }
       }
    }
@@ -79,7 +79,7 @@ class ViewBuilder(private val model: WordleModel, private val keyboard: Region) 
          iconSize = 26
          iconColor = Color.GRAY
          StackPane.setAlignment(this, Pos.CENTER_RIGHT)
-         setOnMouseClicked { _ -> model.darkMode = !model.darkMode }
+         setOnMouseClicked { _ -> model.darkMode.value = !model.darkMode.value }
       }
       children += Separator().apply {
          StackPane.setAlignment(this, Pos.BOTTOM_CENTER)
