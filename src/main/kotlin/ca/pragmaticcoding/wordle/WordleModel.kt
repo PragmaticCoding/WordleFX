@@ -12,7 +12,7 @@ data class WordleModel(var currentColumn: Int = 0,
                        val word: ObservableList<Char> = FXCollections.observableArrayList(),
                        val alphabet: Map<Char, ObjectProperty<LetterStatus>> = CharRange('A', 'Z').associateBy({ it },
                                                                                                                { SimpleObjectProperty(LetterStatus.UNLOCKED) }),
-                       val wordValidity: List<SimpleBooleanProperty> = List(6) { _ -> SimpleBooleanProperty(true) },
+                       val wordValidity: List<SimpleBooleanProperty> = List(6) { SimpleBooleanProperty(true) },
                        val wordsValid: BooleanBinding = run {
                           var results = SimpleBooleanProperty(true).and(wordValidity[0])
                           wordValidity.forEach { results = results.and(it) }
