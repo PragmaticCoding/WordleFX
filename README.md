@@ -2,7 +2,7 @@
 
 This simple game is everywhere right now (the beginning of 2022) and it seems like everyone is playing it.  As I was writing this application, it was announced that Wordle was sold to the New York Times, who will host it in the future.
 
-If you don't know about Wordle you should go and take a look at it [here](https://www.powerlanguage.co.uk/wordle/){:target="_blank"}.  The website has all of the information that you need to understand how the game works, and you can play it (once a day) to see how it looks when it's running.
+If you don't know about Wordle you should go and take a look at it [here](https://www.powerlanguage.co.uk/wordle/).  The website has all of the information that you need to understand how the game works, and you can play it (once a day) to see how it looks when it's running.
 
 The game mechanics are very similar to "Mastermind", where you get clues about which letters are correct, and which are letters in the word but not in the correct place.  It's different in these respects:
 
