@@ -9,7 +9,7 @@ class WordleData {
    private val dictionary: List<String> = (WordleData::class.java.getResource("/data/dictionary.txt")?.readText() ?: "").split("\n")
 
    fun getWord(): String {
-      return solutions[LocalDate.of(2021, 6, 19).until(LocalDate.now(), ChronoUnit.DAYS).toInt()]
+      return solutions[LocalDate.of(2021, 6, 17).until(LocalDate.now(), ChronoUnit.DAYS).toInt()]
    }
 
    fun isWordValid(characters: List<Char>): Boolean {

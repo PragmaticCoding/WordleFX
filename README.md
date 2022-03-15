@@ -30,3 +30,7 @@ Probably the strangest thing to Java programmers will be "Scope Functions", espe
 
 
 ![The Game](https://github.com/PragmaticCoding/WordleFX/blob/master/WordleFX1.png)
+
+# Running The Application 
+
+Clone this project and then run the Gradle task:  Applicaion -> Run.
